@@ -25,13 +25,13 @@ export const en = {
 import { loadLocale, checkLocale } from "@/i18n";
 import type { GetStaticProps, InferGetStaticPropsType } from "next"
 
-export (function getStaticProps({ locale }) {
+export function getStaticProps({ locale }) {
   return {
     props: {
       translation: await loadLocale(checkLocale(locale))
     }
   }
-}) satisfies GetStaticProps;
+} satisfies GetStaticProps;
 
 export function Home({ translation }: InferGetStaticPropsType<typeof getStaticProps>) {
   return <h1>{translation.hello}</h1>;
